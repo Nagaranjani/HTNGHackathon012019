@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+	background-color: powderblue;
+}
+
+h2 {
+	color: blue;
+}
+
+p {
+	color: black;
+}
+
+div.subclass {
+	color: red;
+}
+
+</style>
+</head>
+
+
+<body>
+<script>
+
+function loadDoc() {
+	 var xhttp;
+	 var roomNum = document.getElementById("suite").value;
+	 var url = "http://localhost:8080/athidhi/webapi/myresource"+"?"+"suite="+roomNum;
+	 if (window.XMLHttpRequest) {
+	   // code for modern browsers
+	   xhttp = new XMLHttpRequest();
+	   } else {
+	   // code for IE6, IE5
+	   xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	 }
+	 xhttp.onreadystatechange = function() {
+	   if (this.readyState == 4 && this.status == 200) {
+	     document.getElementById("demo").innerHTML = this.responseText;
+	   }
+	 };
+	 xhttp.open("GET", url, true);
+	 xhttp.send();
+	}
+	
+function upOnSubmit() {
+	document.getElementById("onsub").innerHTML = "Submitted successfully";
+}
+
+
+</script>
+<form role="form" method="post" id="reused_form">
+<table>
+<th colspan=2><h2 align="center">Concerns of Guest</h2></th>
+<tr>
+<td>
+<div class="row" align="left">
+
+				<label for="name"> <Strong> Staff ID: </Strong></label> <b> 101</b>
+				<br></br> <label for="Room Number"> <Strong> Suite #: </Strong>
+				</label> <input type="text"  onblur="loadDoc()" class="form-control" id="suite" name="suite"
+					required > 
+					<br></br>
+			</div>
+
+
+
+			<div  align="left">
+
+				<table>
+				<tr>
+					<td>
+						<label for="name"> <Strong> Customer Name: </Strong></label>
+					<td>
+					<td>
+						<p id="demo" color="black">  </p>
+					<td>
+				</tr>
+				</table>
+				
+				</div>	
+				<br></br>
+				<div  align="left">
+					<Strong> Concern Type: </Strong>
+				 <select name="mydropdown">
+				 	<option></option>
+					<option value="Food">Food</option>
+					<option value="Maintenance">Maintenance</option>
+					<option value="Inventory">Inventory</option>
+					<option value="Front Desk Services">Front Desk Services</option>
+					<option value="Boarding">Boarding</option>
+
+				</select> <br></br> <label for="Issue Description"> <Strong>
+						Concern Description:</Strong></label>
+				<textarea class="form-control" type="textarea" name="comments"
+					id="comments" placeholder="Enter Customer Isuues" cols="50" 
+					rows="5"></textarea>
+					
+				<br></br>
+				<div style="text-align: center">
+					<button type="button" onClick="upOnSubmit()">
+						<b>Save</b>
+					</button>
+				</div>
+			</div>
+			<div id="onsub" class="subclass"></div>
+		</form>
+
+</body>
+</html>
+</td>
+<td>
+<img src="HotelImage.jpg" alt="Hotel" width="300" height="300"
+			align="right" >
+</td>
+</tr>
+
+</table>
+
+			

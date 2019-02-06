@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+	background-color: powderblue;
+}
+
+h2 {
+	color: blue;
+}
+
+
+</style>
+</head>
+<body>
+
+<script>
+
+function loadGuest() {
+	 var xhttp;
+	 var roomNum = document.getElementById("profileid").value;
+	 var url = "http://localhost:8080/athidhi/webapi/guestFeed"+"?"+"profID="+roomNum;
+	 if (window.XMLHttpRequest) {
+	   // code for modern browsers
+	   xhttp = new XMLHttpRequest();
+	   } else {
+	   // code for IE6, IE5
+	   xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	 }
+	 xhttp.onreadystatechange = function() {
+	   if (this.readyState == 4 && this.status == 200) {
+	     document.getElementById("sfeedback").innerHTML = this.responseText;
+	   }
+	 };
+	 xhttp.open("GET", url, true);
+	 xhttp.send();
+	}
+	
+
+</script>
+<!-- 
+<table align="center">
+<th>
+	<h2 align ="center">
+		<b> Feedback History </b>
+	</h2>
+</th>
+	<tr>
+		<td>
+			<Strong> Guest Profile ID </Strong>  <input type="text"  id="profileid" name="ID">
+		</td>
+	</tr>
+	<tr>
+		<td><button type="button" onClick="loadGuest()" >Fetch </button></td>
+	</tr>
+	<tr>
+		<br/>
+	</tr>
+	<tr>
+	<td>
+		<label for="Staff Description"> <Strong>
+				Feedback From Staff</Strong></label>
+	</td>
+	</tr>
+	<tr>
+	<b><div id="sfeedback"></div></b>
+	</tr>
+</table>
+ -->
+ 
+
+	<h2 align ="center">
+		<b> Feedback History </b>
+	</h2>
+
+	<form>
+		 <Strong> Guest Profile ID </Strong>  <input type="text"  id="profileid" name="ID">
+		<br></br> 
+		<button type="button" onClick="loadGuest()" >Fetch </button>
+		<br></br> 
+		<label for="Staff Description"> <Strong>
+				Feedback From Staff</Strong></label>
+		<b><div id="sfeedback"></div></b>
+		 
+	</form>
+
+
+</body>
+</html>
